@@ -26,4 +26,11 @@ class MedicalSupplies extends Model
         {
             return $this->belongsTo(StoreKeeper::class, 'created_by');
         }
+
+         //  علاقة المستلزمات الطبية  مع المستلزمات الطبية للمعاينة
+
+       public function medicalSuppliesInspection()
+       {
+           return $this->hasMany(MeidcalSuppliesInspection::class, 'medicalSuppliesID');
+       }
 }

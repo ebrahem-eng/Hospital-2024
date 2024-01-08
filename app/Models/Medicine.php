@@ -27,4 +27,11 @@ class Medicine extends Model
     {
         return $this->belongsTo(StoreKeeper::class, 'created_by');
     }
+
+     //علاقة الادوية مع ادوية المعاينة
+
+     public function inspection()
+     {
+         return $this->belongsTo(MedicineInspectionPatient::class, 'medicineID');
+     }
 }

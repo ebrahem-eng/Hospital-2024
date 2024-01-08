@@ -14,6 +14,7 @@ class Room extends Model
         'name',
         'code',
         'status',
+        'type',
         'created_by',
         'department_id',
         'floor_id'
@@ -39,4 +40,11 @@ class Room extends Model
        {
            return $this->belongsTo(Floor::class, 'floor_id');
        }
+
+        //علاقة الغرفة مع العملية
+ 
+        public function surgeries()
+        {
+            return $this->belongsTo(Surgeries::class, 'roomID');
+        }
 }

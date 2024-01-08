@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Reception extends Model
 {
-    use HasFactory , SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -28,5 +28,19 @@ class Reception extends Model
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'created_by');
+    }
+
+    //علاقة موظفين الاستقبال مع السجل الطبي
+
+    public function CreatemedicalRecord()
+    {
+        return $this->hasMany(PatientMedicalRecord::class, 'created_by_receptionist');
+    }
+
+    //علاقة موظفين الاستقبال مع المرضى
+
+    public function patient()
+    {
+        return $this->hasMany(Patient::class, 'created_by');
     }
 }

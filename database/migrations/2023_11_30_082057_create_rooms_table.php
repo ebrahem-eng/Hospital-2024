@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('code');
+            $table->string('type');
             $table->tinyInteger('status');
             $table->foreignId('created_by')->references('id')->on('admins');
             $table->foreignId('department_id')->references('id')->on('departments');

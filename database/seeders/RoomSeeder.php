@@ -19,6 +19,7 @@ class RoomSeeder extends Seeder
             'status' => '1',
             'created_by' => '1',
             'department_id' => '1',
+            'type' => 'operation',
             'floor_id' => '1',
         ]);
     }

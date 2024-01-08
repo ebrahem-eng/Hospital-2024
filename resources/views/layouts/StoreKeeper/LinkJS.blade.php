@@ -33,3 +33,11 @@
 
 <!-- Page Specific JS File -->
 <script src="{{ asset('DashboardAssets/assets/js/page/modules-datatables.js') }}"></script>
+
+
+<script>
+    function closeAlert(alertId) {
+        var alert = document.getElementById(alertId);
+        alert.style.display = 'none';
+    }
+</script>
