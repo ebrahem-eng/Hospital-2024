@@ -48,20 +48,40 @@ class Doctor extends Authenticatable
         return $this->hasMany(PatientMedicalRecord::class, 'doctorID');
     }
 
-     //علاقة الطبيب الذي يقوم بإنشاء السجل الطبي
+    //علاقة الطبيب الذي يقوم بإنشاء السجل الطبي
 
-     public function CreatemedicalRecord()
-     {
-         return $this->hasMany(PatientMedicalRecord::class, 'created_by_doctor');
-     }
+    public function CreatemedicalRecord()
+    {
+        return $this->hasMany(PatientMedicalRecord::class, 'created_by_doctor');
+    }
 
-       //علاقة الطبيب مع العمليات الجراحية 
+    //علاقة الطبيب مع العمليات الجراحية 
 
-       public function surgeries()
-       {
-           return $this->hasMany(Surgeries::class, 'doctorID');
-       }
+    public function surgeries()
+    {
+        return $this->hasMany(Surgeries::class, 'doctorID');
+    }
 
+    //علاقة الطبيب مع  طلبات الاجهزة الطبية 
+
+    public function medicalMachineRequest()
+    {
+        return $this->hasMany(MedicalMachineRequest::class, 'doctorID');
+    }
+
+    //علاقة الطبيب مع اوقات المعاينات المتاحة 
+
+    public function availablesTime()
+    {
+        return $this->hasMany(DoctorTimeAvailable::class, 'doctorID');
+    }
+
+    //علاقة الطبيب مع المواعيد
+
+    public function appointment()
+    {
+        return $this->hasMany(Appointment::class, 'doctorID');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

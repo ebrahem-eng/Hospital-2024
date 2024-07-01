@@ -46,82 +46,9 @@
                 {{-- <li><a class="nav-link" href="{{ route('admin.reception.archive') }}">Reception Archive</a></li> --}}
             </ul>
         </li>
-        <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>StoreKeeper
-                    Manager</span></a>
-            <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('admin.storeKeeper.index') }}">StoreKeeper Table</a></li>
-                <li><a class="nav-link" href="{{ route('admin.storeKeeper.create') }}">Add StoreKeeper </a></li>
-                <li><a class="nav-link" href="{{ route('admin.storeKeeper.archive') }}">StoreKeeper Archive</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Department
-                    Employe
-                </span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{ route('admin.departmentEmploye.index') }}">Department Employe Table</a></li>
-                <li><a href="{{ route('admin.departmentEmploye.create') }}">Add Department Employe</a></li>
-                <li><a href="{{ route('admin.departmentEmploye.archive') }}">Dep Employe Archive</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-plug"></i> <span>Nurse Manager</span></a>
-            <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('admin.nurse.index') }}">Nurse Table</a></li>
-                <li><a class="nav-link" href="{{ route('admin.nurse.create') }}">Add Nurse</a></li>
-                <li><a class="nav-link" href="{{ route('admin.nurse.archive') }}">Nurse Archive</a></li>
+    
+    
 
-            </ul>
-        </li>
-        <li class="menu-header">Pages</li>
-        <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Department
-                    Manager</span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{ route('admin.department.index') }}">Department Table</a></li>
-                <li><a href="{{ route('admin.department.create') }}">Add Department</a></li>
-                <li><a href="{{ route('admin.department.archive') }}">Department Archive</a></li>
-
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-exclamation"></i>
-                <span>Room Manager</span></a>
-            <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('admin.room.index') }}">Room Table</a></li>
-                <li><a class="nav-link" href="{{ route('admin.room.create') }}">Add Room</a></li>
-                <li><a class="nav-link" href="{{ route('admin.room.archive') }}">Room Archive</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-bicycle"></i> <span>Admin
-                    Manager</span></a>
-            <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('admin.admin.index') }}">Admin Table</a></li>
-                <li><a class="nav-link" href="{{ route('admin.admin.create') }}">Add Admin</a></li>
-                <li><a class="nav-link" href="{{ route('admin.admin.archive') }}">Admin Archive</a></li>
-
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-ellipsis-h"></i>
-                <span>Complaints Manager</span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{ route('admin.complaint.index') }}">Complaints Table</a></li>
-                <li><a class="nav-link" href="{{ route('admin.complaint.archive') }}">Complaints Archive</a></li>
-            </ul>
-        </li>
-
-        <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-ellipsis-h"></i>
-                <span>Floor Manager</span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{ route('admin.floor.index') }}">Floor Table</a></li>
-                <li><a href="{{ route('admin.floor.create') }}">Add Floor</a></li>
-                <li><a class="nav-link" href="{{ route('admin.floor.archive') }}">Floor Archive</a></li>
-            </ul>
-        </li>
         {{-- <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li> --}}
     </ul>
 <br>

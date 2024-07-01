@@ -26,4 +26,11 @@ class MedicalMachine extends Model
             return $this->belongsTo(StoreKeeper::class, 'created_by');
         }
 
+         //علاقة الاجهزة الطبية مع  طلبات الاجهزة الطبية 
+
+         public function medicalMachineRequest()
+         {
+             return $this->hasMany(MedicalMachineRequest::class, 'medicalMachineID');
+         }
+
 }

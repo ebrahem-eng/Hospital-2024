@@ -49,4 +49,11 @@ class Patient extends Model
            return $this->hasMany(Surgeries::class, 'patientID');
        }
 
+        //علاقة المريض مع  المواعيد
+
+        public function appointment()
+        {
+            return $this->hasMany(Appointment::class, 'patientID');
+        }
+
 }

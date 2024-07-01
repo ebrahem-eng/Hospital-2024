@@ -81,9 +81,16 @@ class Admin extends Authenticatable
 
     //علاقة المدير مع الغرف
 
-    public function roooms()
+    public function rooms()
     {
         return $this->hasMany(Room::class, 'created_by');
+    }
+
+    //علاقة المدير مع طلبات الاجهزة الطبية
+
+    public function medicalMachineRequest()
+    {
+        return $this->hasMany(MedicalMachineRequest::class, 'adminID');
     }
 
     // //علاقة المدير مع الشكاوي

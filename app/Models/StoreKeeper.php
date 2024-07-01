@@ -53,6 +53,13 @@ class StoreKeeper extends Authenticatable
          return $this->hasMany(medicalMachine::class, 'created_by');
      }
 
+      //علاقة امين المستودع مع طلبات الاجهزة الطبية
+
+      public function medicalMachineRequest()
+      {
+          return $this->hasMany(MedicalMachineRequest::class, 'storeKeeperID');
+      }
+
 
     /**
      * The attributes that should be hidden for serialization.

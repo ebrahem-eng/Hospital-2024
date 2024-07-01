@@ -20,8 +20,11 @@
                 </svg>
                 <span>Medical Record Managment</span></a>
             <ul class="dropdown-menu">
+                <br>
                 <li><a class="nav-link" href="{{ route('doctor.medicalRecord.index') }}">Medical Record Table</a></li>
+                <br>
                 <li><a class="nav-link" href="{{ route('doctor.medicalRecord.create') }}">Add Medical Record</a></li>
+                <br>
                 <li><a class="nav-link" href="{{ route('doctor.medicalRecord.archive') }}">Medical Record Archive </a></li>
             </ul>
         </li>
@@ -29,101 +32,55 @@
 
         <li class="dropdown">
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Medical Machine
-                    Managment</span></a>
+                    Request</span></a>
             <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('storeKeeper.medicalMachine.index') }}">Medical Machine Table</a></li>
-                <li><a class="nav-link" href="{{ route('storeKeeper.medicalMachine.create') }}">Add Medical Machine</a></li>
+                <br>
+                <li><a class="nav-link" href="{{ route('doctor.medicalMachineRequest.index') }}">Medical Machine Request Table</a></li>
+                <br>
+                <li><a class="nav-link" href="{{ route('doctor.medicalMachineRequest.create') }}">Add Medical Machine Request</a></li>
                 {{-- <li><a class="nav-link" href="{{ route('admin.specialization.archive') }}">Specialization Archive </a> --}}
                 </li>
             </ul>
         </li>
-        <li class="menu-header">Stisla</li>
+        <br>
+        <li class="menu-header"></li>
         <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Medical Supplies
-                    Manager</span></a>
+            <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i>Available TimeManage <span>
+                    </span></a>
             <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('storeKeeper.medicalSupplies.index') }}">Medical Supplies Table</a></li>
-                <li><a class="nav-link" href="{{ route('storeKeeper.medicalSupplies.create') }}">Add Medical Supplies</a></li>
+                <br>
+                <li><a class="nav-link" href="{{ route('doctor.availableTime.index') }}">Available Time Table</a></li>
+                <br>
+                <li><a class="nav-link" href="{{ route('doctor.availableTime.create') }}">Add Available Time</a></li>
                 {{-- <li><a class="nav-link" href="{{ route('admin.reception.archive') }}">Reception Archive</a></li> --}}
             </ul>
         </li>
+        <br>
         <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>StoreKeeper
+            <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Appointment
                     Manager</span></a>
             <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('admin.storeKeeper.index') }}">StoreKeeper Table</a></li>
-                <li><a class="nav-link" href="{{ route('admin.storeKeeper.create') }}">Add StoreKeeper </a></li>
-                <li><a class="nav-link" href="{{ route('admin.storeKeeper.archive') }}">StoreKeeper Archive</a></li>
+                <br>
+                <li><a class="nav-link" href="{{ route('doctor.appointment.index') }}">Appointment Table</a></li>
+                <br>
+                <li><a class="nav-link" href="{{ route('doctor.appointment.create1') }}">Add Appointment </a></li>
+                {{-- <li><a class="nav-link" href="{{ route('admin.storeKeeper.archive') }}">StoreKeeper Archive</a></li> --}}
             </ul>
         </li>
+        <br>
         <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Department
-                    Employe
+            <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Surgeries Manager
+                    
                 </span></a>
             <ul class="dropdown-menu">
-                <li><a href="{{ route('admin.departmentEmploye.index') }}">Department Employe Table</a></li>
-                <li><a href="{{ route('admin.departmentEmploye.create') }}">Add Department Employe</a></li>
-                <li><a href="{{ route('admin.departmentEmploye.archive') }}">Dep Employe Archive</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-plug"></i> <span>Nurse Manager</span></a>
-            <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('admin.nurse.index') }}">Nurse Table</a></li>
-                <li><a class="nav-link" href="{{ route('admin.nurse.create') }}">Add Nurse</a></li>
-                <li><a class="nav-link" href="{{ route('admin.nurse.archive') }}">Nurse Archive</a></li>
-
-            </ul>
-        </li>
-        <li class="menu-header">Pages</li>
-        <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Department
-                    Manager</span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{ route('admin.department.index') }}">Department Table</a></li>
-                <li><a href="{{ route('admin.department.create') }}">Add Department</a></li>
-                <li><a href="{{ route('admin.department.archive') }}">Department Archive</a></li>
-
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-exclamation"></i>
-                <span>Room Manager</span></a>
-            <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('admin.room.index') }}">Room Table</a></li>
-                <li><a class="nav-link" href="{{ route('admin.room.create') }}">Add Room</a></li>
-                <li><a class="nav-link" href="{{ route('admin.room.archive') }}">Room Archive</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-bicycle"></i> <span>Admin
-                    Manager</span></a>
-            <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('admin.admin.index') }}">Admin Table</a></li>
-                <li><a class="nav-link" href="{{ route('admin.admin.create') }}">Add Admin</a></li>
-                <li><a class="nav-link" href="{{ route('admin.admin.archive') }}">Admin Archive</a></li>
-
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-ellipsis-h"></i>
-                <span>Complaints Manager</span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{ route('admin.complaint.index') }}">Complaints Table</a></li>
-                <li><a class="nav-link" href="{{ route('admin.complaint.archive') }}">Complaints Archive</a></li>
+                
+                <li><a href="{{ route('doctor.surgeries.index') }}">Surgeries Table</a></li>
+                <br>
+                <li><a href="{{ route('doctor.surgeries.finished') }}">Finished Surgeries Table</a></li>
+                {{-- <li><a href="{{ route('admin.departmentEmploye.archive') }}">Dep Employe Archive</a></li> --}}
             </ul>
         </li>
 
-        <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-ellipsis-h"></i>
-                <span>Floor Manager</span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{ route('admin.floor.index') }}">Floor Table</a></li>
-                <li><a href="{{ route('admin.floor.create') }}">Add Floor</a></li>
-                <li><a class="nav-link" href="{{ route('admin.floor.archive') }}">Floor Archive</a></li>
-            </ul>
-        </li>
-        {{-- <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li> --}}
     </ul>
 <br>
 <br>
