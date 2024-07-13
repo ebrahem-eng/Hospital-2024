@@ -17,6 +17,7 @@ class MedicalSupplies extends Model
         'status',
         'img',
         'quantity',
+        'deletedQuantity',
         'created_by',
     ];
 

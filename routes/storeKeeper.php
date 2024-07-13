@@ -42,6 +42,8 @@ Route::middleware(['StoreKeeper'])->name('storeKeeper.')->prefix('storeKeeper')-
 
     Route::put('/medicine/update/{id}', [MedicineController::class, 'update'])->name('medicine.update');
 
+    Route::put('/medicine/delete/custom/quantity/{id}', [MedicineController::class, 'deleteCustomQuantity'])->name('medicine.delete.custom.quantity');
+
     Route::delete('/medicine/softDelete/{id}', [MedicineController::class, 'softDelete'])->name('medicine.soft.delete');
 
 
@@ -70,6 +72,8 @@ Route::middleware(['StoreKeeper'])->name('storeKeeper.')->prefix('storeKeeper')-
      Route::get('/medicalSupplies/edit/{id}', [MedicalSuppliesController::class, 'edit'])->name('medicalSupplies.edit');
  
      Route::put('/medicalSupplies/update/{id}', [MedicalSuppliesController::class, 'update'])->name('medicalSupplies.update');
+
+     Route::put('/medicalSupplies/delete/custom/quantity/{id}', [MedicalSuppliesController::class, 'deleteCustomQuantity'])->name('medicalSupplies.delete.custom.quantity');
  
      Route::delete('/medicalSupplies/softDelete/{id}', [MedicalSuppliesController::class, 'softDelete'])->name('medicalSupplies.soft.delete');
 });

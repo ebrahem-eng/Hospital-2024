@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('calibres');
             $table->integer('quantity');
+            $table->integer('deletedQuantity')->default('0')->nullable();
             $table->double('price');
             $table->string('details');
             $table->string('img');

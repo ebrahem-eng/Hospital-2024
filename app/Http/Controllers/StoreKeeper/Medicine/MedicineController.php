@@ -107,13 +107,51 @@ class MedicineController extends Controller
         }
     }
 
+    //حذف كمية مخصصة من الادوية
+
+    public function deleteCustomQuantity(Request $request, $id)
+    {
+        $medicine = Medicine::findOrFail($id);
+        $deletedQuantity = $request->input('deletedQuantity');
+        $originalQuantity = $medicine->quantity;
+    
+        if ($deletedQuantity > $medicine->quantity) {
+            return redirect()->back()->with('error_message', 'The Deleted Medicine Quantity is larger than the Original Quantity'); 
+        } elseif ($deletedQuantity == $medicine->quantity) {
+            $newMedicineQuantity = $originalQuantity - $deletedQuantity;
+            $medicine->update([
+                'quantity' => $newMedicineQuantity,
+                'deletedQuantity' => $medicine->deletedQuantity + $deletedQuantity,
+            ]); 
+            // $medicine->delete(); 
+    
+            return redirect()->back()->with('success_message', 'Medicine Deleted Successfully');
+        } else {
+            $newMedicineQuantity = $originalQuantity - $deletedQuantity;
+            $medicine->update([
+                'quantity' => $newMedicineQuantity,
+                'deletedQuantity' => $medicine->deletedQuantity + $deletedQuantity,
+            ]); 
+    
+            return redirect()->back()->with('success_message', 'Medicine Quantity Updated and Partially Deleted Successfully');
+        }
+    }
+    
+
     //حذف دواء ونقله للارشيف 
 
     public function softDelete($id)
     {
         $medicine = Medicine::findOrFail($id);
 
-        $medicine->delete();
+        $newMedicineQuantity = 0;
+
+        $medicine->update([
+            'deletedQuantity' => $medicine->deletedQuantity + $medicine->quantity,
+            'quantity' => $newMedicineQuantity,
+        ]); 
+
+        // $medicine->delete();
 
         return redirect()->route('storeKeeper.medicine.index')->with('success_message', 'Medicine Deleted Successfully');
     }

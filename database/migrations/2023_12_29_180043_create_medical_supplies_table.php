@@ -19,6 +19,7 @@ return new class extends Migration
             $table->tinyInteger('status');
             $table->string('img');
             $table->integer('quantity');
+            $table->integer('deletedQuantity')->default('0')->nullable();
             $table->foreignId('created_by')->references('id')->on('store_keepers');
             $table->softDeletes();
             $table->timestamps();
