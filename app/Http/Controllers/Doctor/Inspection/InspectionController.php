@@ -34,7 +34,7 @@ class InspectionController extends Controller
     }
 
 
-    //تخزين السجل الطبي في قاعدة البيانات 
+    //تخزين المعاينة الطبي في قاعدة البيانات 
 
     public function storeInspection(Request $request)
     {
@@ -86,6 +86,7 @@ class InspectionController extends Controller
 
             $medicalSuppliesInspections = MeidcalSuppliesInspection::where('inspectionID', $inspectionID)->get();
 
+
             $medicalSuppliesQuantities = [];
             $medicalSupplies = [];
 
@@ -111,16 +112,96 @@ class InspectionController extends Controller
         $medicalSuppliesID = $request->input('medicalSuppliesID');
         $quantity = $request->input('quantity');
         $inspectionID = $request->input('inspectionID');
+        $medicalSupplies = MedicalSupplies::findOrfail($medicalSuppliesID);
 
-        MeidcalSuppliesInspection::create([
-            'medicalSuppliesID' => $medicalSuppliesID,
-            'quantity' => $quantity,
-            'inspectionID' => $inspectionID,
-        ]);
+        $checkMedicalSuppliesExists = MeidcalSuppliesInspection::where('inspectionID', $inspectionID)->where('medicalSuppliesID', $medicalSuppliesID)->first();
+        if ($checkMedicalSuppliesExists) {
+            return redirect()->back()->with('error_message', 'The Medical Supplies Already Exists In The Inspection if You Want Edit The Medicl Supplies In Inspection');
+        } else if ($quantity > $medicalSupplies->quantity) {
+            return redirect()->back()->with('error_message', 'The Quantity Greater Than Original Quantity');
+        } else if ($medicalSupplies->quantity == 0) {
+            return redirect()->back()->with('error_message', 'The Medical Supplies Is Empty');
+        } else {
+            $medicalSupplies->update([
+                'quantity' => $medicalSupplies->quantity -  $quantity,
+            ]);
+            MeidcalSuppliesInspection::create([
+                'medicalSuppliesID' => $medicalSuppliesID,
+                'quantity' => $quantity,
+                'inspectionID' => $inspectionID,
+            ]);
 
-        return redirect()->back()->with('success_message', 'Medical Supplies Added Successfully');
+            return redirect()->back()->with('success_message', 'Medical Supplies Added Successfully');
+        }
     }
 
+    //عرض صفحة تعديل كمية المستلزم الطبي داخل المعاينة
+
+    public function editMedicalSuppliesInspectionQuantity(Request $request, $id)
+    {
+
+        $medicalSuppliesID = $id;
+        $inspectionID = $request->input('inspectionID');
+        $medicalSupplies = MedicalSupplies::findOrfail($medicalSuppliesID);
+        $medicalSuppliesInspection = MeidcalSuppliesInspection::where('inspectionID', $inspectionID)
+            ->where('medicalSuppliesID', $medicalSuppliesID)
+            ->firstOrFail();
+
+
+        return view('Doctor.MedicalRecord.Inspection.editMedicalSuppliesInspection', compact('medicalSuppliesInspection', 'medicalSupplies', 'inspectionID'));
+    }
+
+    //تخزين تعديل الكمية للمستلزمات الطبية الخاصة بالمعاينة
+
+    public function updateMedicalSuppliesInspectionQuantity(Request $request, $id)
+    {
+
+        $medicalSuppliesInspectionID = $id;
+        $medicalSuppliesInspection = MeidcalSuppliesInspection::findOrfail($medicalSuppliesInspectionID);
+        $medicalSuppliesInspectionQuantity = $request->input('medicalSuppliesInspectionQuantity');
+        $medicalSupplies = MedicalSupplies::findOrfail($medicalSuppliesInspection->medicalSuppliesID);
+
+        if ($medicalSuppliesInspectionQuantity == $medicalSuppliesInspection->quantity) {
+            return redirect()->back()->with('error_message', 'Write A New Quantity');
+        } else if ($medicalSuppliesInspectionQuantity > $medicalSuppliesInspection->quantity) {
+            $newMedicalSuppliesQuantity = $medicalSuppliesInspectionQuantity - $medicalSuppliesInspection->quantity;
+            $medicalSupplies->update([
+                'quantity' => $medicalSupplies->quantity - $newMedicalSuppliesQuantity,
+            ]);
+            $medicalSuppliesInspection->update([
+                'quantity' => $medicalSuppliesInspectionQuantity,
+            ]);
+            return redirect()->back()->with('success_message', 'Medical Supplies Inspection Updated Successfully');
+        } else if ($medicalSuppliesInspectionQuantity < $medicalSuppliesInspection->quantity) {
+            $newMedicalSuppliesQuantity =  $medicalSuppliesInspection->quantity - $medicalSuppliesInspectionQuantity;
+            $medicalSupplies->update([
+                'quantity' => $medicalSupplies->quantity + $newMedicalSuppliesQuantity,
+            ]);
+            $medicalSuppliesInspection->update([
+                'quantity' => $medicalSuppliesInspectionQuantity,
+            ]);
+            return redirect()->back()->with('success_message', 'Medical Supplies Inspection Updated Successfully');
+        }
+    }
+
+    //حذف مستلزم طبي من المعاينة واعادة الكمية للاصل
+
+    public function deleteMedicalSuppliesInspectionQuantity(Request $request , $id)
+    {
+        $medicalSuppliesID = $id;
+        $inspectionID = $request->input('inspectionID');
+        $medicalSuppliesInspection = MeidcalSuppliesInspection::where('inspectionID', $inspectionID)
+        ->where('medicalSuppliesID', $medicalSuppliesID)
+        ->firstOrFail();
+        $medicalSupplies = MedicalSupplies::findOrfail($medicalSuppliesID);
+
+        $medicalSupplies->update([
+            'quantity' => $medicalSupplies->quantity + $medicalSuppliesInspection->quantity
+        ]);
+        $medicalSuppliesInspection->delete();
+
+        return redirect()->back()->with('success_message', 'Medical Supplies Inspection Deleted Successfully');
+    }
 
     //عرض صفحة اختيار الادوية للمعاينة
 
@@ -204,6 +285,7 @@ class InspectionController extends Controller
     }
 
     //تخزين العملية الجراحية في قاعدة البيانات
+    
     public function surgeriesInspectionStore(Request $request)
     {
 
@@ -262,19 +344,6 @@ class InspectionController extends Controller
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     //عرض صفحة تعديل بيانات سجل طبي 
 
     public function edit($id)
@@ -283,7 +352,7 @@ class InspectionController extends Controller
         return view('Doctor.MedicalRecord.edit', compact('medicalRecord'));
     }
 
-    //تعديل بيانات جهاز طبي داخل قاعدة البيانات 
+    //تعديل بيانات سجل طبي داخل قاعدة البيانات 
 
     public function update(Request $request, $id)
     {
@@ -333,7 +402,7 @@ class InspectionController extends Controller
         }
     }
 
-    //استعادة الطبيب المحذوف من الارشيف
+    //استعادة السجل الطبي المحذوف من الارشيف
 
     public function restore($id)
     {

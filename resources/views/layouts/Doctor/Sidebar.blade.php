@@ -13,11 +13,13 @@
         <li class="menu-header">System</li>
         <li class="dropdown">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
-                <svg style="margin-right: 20px; margin-left:10px;" xmlns="http://www.w3.org/2000/svg" height="17px"
-                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                    <path
-                        d="M224 48a80 80 0 1 1 0 160 80 80 0 1 1 0-160zM96 128a128 128 0 1 0 256 0A128 128 0 1 0 96 128zm64 225c5.2-.7 10.6-1 16-1h96c5.4 0 10.8 .3 16 1v49c-27.6 7.1-48 32.2-48 62v32c0 8.8 7.2 16 16 16h24c8.8 0 16-7.2 16-16s-7.2-16-16-16h-8V464c0-17.7 14.3-32 32-32s32 14.3 32 32v16h-8c-8.8 0-16 7.2-16 16s7.2 16 16 16h24c8.8 0 16-7.2 16-16V464c0-29.8-20.4-54.9-48-62V361.3c46.9 19 80 65 80 118.7v8c0 13.3 10.7 24 24 24s24-10.7 24-24v-8c0-97.2-78.8-176-176-176H176C78.8 304 0 382.8 0 480v8c0 13.3 10.7 24 24 24s24-10.7 24-24v-8c0-53.7 33.1-99.7 80-118.7v41c-23.1 6.9-40 28.3-40 53.7c0 30.9 25.1 56 56 56s56-25.1 56-56c0-25.4-16.9-46.8-40-53.7V353zm-16 79a24 24 0 1 1 0 48 24 24 0 1 1 0-48z" />
-                </svg>
+             <i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-medical" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v.634l.549-.317a.5.5 0 1 1 .5.866L9 6l.549.317a.5.5 0 1 1-.5.866L8.5 6.866V7.5a.5.5 0 0 1-1 0v-.634l-.549.317a.5.5 0 1 1-.5-.866L7 6l-.549-.317a.5.5 0 0 1 .5-.866l.549.317V4.5A.5.5 0 0 1 8 4M5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
+                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+                  </svg>
+             </i>
                 <span>Medical Record Managment</span></a>
             <ul class="dropdown-menu">
                 <br>
@@ -31,8 +33,14 @@
         <br>
 
         <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Medical Machine
-                    Request</span></a>
+            <a href="#" class="nav-link has-dropdown">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-pulse-fill" viewBox="0 0 16 16">
+                        <path d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5.5.5 0 0 1-.5.5.5.5 0 0 0-.5.5V2a.5.5 0 0 0 .5.5h5A.5.5 0 0 0 11 2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5"/>
+                        <path d="M4.085 1H3.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1h-.585q.084.236.085.5V2a1.5 1.5 0 0 1-1.5 1.5h-5A1.5 1.5 0 0 1 4 2v-.5q.001-.264.085-.5M9.98 5.356 11.372 10h.128a.5.5 0 0 1 0 1H11a.5.5 0 0 1-.479-.356l-.94-3.135-1.092 5.096a.5.5 0 0 1-.968.039L6.383 8.85l-.936 1.873A.5.5 0 0 1 5 11h-.5a.5.5 0 0 1 0-1h.191l1.362-2.724a.5.5 0 0 1 .926.08l.94 3.135 1.092-5.096a.5.5 0 0 1 .968-.039Z"/>
+                      </svg>
+                </i>
+                    <span>Medical Machine Request</span></a>
             <ul class="dropdown-menu">
                 <br>
                 <li><a class="nav-link" href="{{ route('doctor.medicalMachineRequest.index') }}">Medical Machine Request Table</a></li>
@@ -45,19 +53,32 @@
         <br>
         <li class="menu-header"></li>
         <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i>Available TimeManage <span>
+            <a href="#" class="nav-link has-dropdown">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
+                        <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9z"/>
+                        <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1zm1.038 3.018a6 6 0 0 1 .924 0 6 6 0 1 1-.924 0M0 3.5c0 .753.333 1.429.86 1.887A8.04 8.04 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5M13.5 1c-.753 0-1.429.333-1.887.86a8.04 8.04 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1"/>
+                      </svg>
+                </i>
+                Available TimeManage <span>
                     </span></a>
             <ul class="dropdown-menu">
                 <br>
                 <li><a class="nav-link" href="{{ route('doctor.availableTime.index') }}">Available Time Table</a></li>
                 <br>
                 <li><a class="nav-link" href="{{ route('doctor.availableTime.create') }}">Add Available Time</a></li>
-                {{-- <li><a class="nav-link" href="{{ route('admin.reception.archive') }}">Reception Archive</a></li> --}}
+   
             </ul>
         </li>
         <br>
         <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Appointment
+            <a href="#" class="nav-link has-dropdown">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar4" viewBox="0 0 16 16">
+                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                      </svg>
+                </i>
+                 <span>Appointment
                     Manager</span></a>
             <ul class="dropdown-menu">
                 <br>
@@ -69,7 +90,14 @@
         </li>
         <br>
         <li class="dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Surgeries Manager
+            <a href="#" class="nav-link has-dropdown">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-pulse-fill" viewBox="0 0 16 16">
+                        <path d="M1.475 9C2.702 10.84 4.779 12.871 8 15c3.221-2.129 5.298-4.16 6.525-6H12a.5.5 0 0 1-.464-.314l-1.457-3.642-1.598 5.593a.5.5 0 0 1-.945.049L5.889 6.568l-1.473 2.21A.5.5 0 0 1 4 9z"/>
+                        <path d="M.88 8C-2.427 1.68 4.41-2 7.823 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C11.59-2 18.426 1.68 15.12 8h-2.783l-1.874-4.686a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8z"/>
+                      </svg>
+                </i> 
+                <span>Surgeries Manager
                     
                 </span></a>
             <ul class="dropdown-menu">

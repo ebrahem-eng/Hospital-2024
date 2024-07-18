@@ -34,14 +34,28 @@ class MedicalMachineRequestController extends Controller
     {
         $medicalMachineID = $request->input('medicalMachineID');
         $detailsRequest = $request->input('detailsRequest');
-        MedicalMachineRequest::create([
-            'doctorID' => Auth::guard('doctor')->user()->id,
-            'status' => '0',
-            'medicalMachineID' => $medicalMachineID,
-            'detailsRequest' => $detailsRequest,
-        ]);
+        $medicalMachine = MedicalMachine::findOrfail($medicalMachineID);
+        $quantityRequest = $request->input('quantity');
+        $medicalMachineOriginalQuantity = $medicalMachine->quantity;
+        if($quantityRequest > $medicalMachineOriginalQuantity)
+        {
+            return redirect()->back()->with('error_message', 'Choose A True Quantity');
 
-        return redirect()->route('doctor.medicalMachineRequest.index')->with('success_message', 'Medical Machine Request Send Successfully');
+        }else {
+            MedicalMachineRequest::create([
+                'doctorID' => Auth::guard('doctor')->user()->id,
+                'status' => '0',
+                'medicalMachineID' => $medicalMachineID,
+                'detailsRequest' => $detailsRequest,
+                'quantity' => $quantityRequest ,
+                'takenDate' => $request->input('takenDate'),
+                'returnDateDoctor' => $request->input('returnDateDoctor'),
+                'statusStoreKeeperReturned' => '0',
+            ]);
+    
+            return redirect()->route('doctor.medicalMachineRequest.index')->with('success_message', 'Medical Machine Request Send Successfully');
+        }
+   
     }
 
 
@@ -62,14 +76,25 @@ class MedicalMachineRequestController extends Controller
 
         $medicalMachineRequest = MedicalMachineRequest::findOrFail($id);
         $medicalMachineID = $request->input('medicalMachineID');
+        $medicalMachine = MedicalMachine::findOrfail($medicalMachineID);
         $detailsRequest = $request->input('detailsRequest');
-
-        $medicalMachineRequest->update([
-            'medicalMachineID' => $medicalMachineID,
-            'detailsRequest' => $detailsRequest,
-        ]);
-
-        return redirect()->route('doctor.medicalMachineRequest.index')->with('success_message', 'Medical Machine Request Canceled Successfully');
+        $quantityRequest = $request->input('quantity');
+        $medicalMachineOriginalQuantity = $medicalMachine->quantity;
+        if($quantityRequest > $medicalMachineOriginalQuantity)
+        {
+            return redirect()->back()->with('error_message', 'Choose A True Quantity');
+        }else{
+            $medicalMachineRequest->update([
+                'medicalMachineID' => $medicalMachineID,
+                'detailsRequest' => $detailsRequest,
+                'quantity' => $quantityRequest ,
+                'takenDate' => $request->input('takenDate'),
+                'returnDateDoctor' => $request->input('returnDateDoctor'),
+            ]);
+    
+            return redirect()->route('doctor.medicalMachineRequest.index')->with('success_message', 'Medical Machine Request Updated Successfully');
+        }
+     
     }
 
     //الغاء طلب قبل ارساله للمدير
@@ -77,8 +102,7 @@ class MedicalMachineRequestController extends Controller
     public function cancel($id)
     {
         $medicalMachineID = $id;
-
-        $medicalMachineRequest = MedicalMachineRequest::findOrfail($id);
+        $medicalMachineRequest = MedicalMachineRequest::findOrfail($medicalMachineID);
         $medicalMachineRequest->update([
             'status' => '4'
         ]);

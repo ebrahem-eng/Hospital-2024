@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreKeeper\Auth\AuthController;
 use App\Http\Controllers\StoreKeeper\MedicalMachine\MedicalMachineController;
+use App\Http\Controllers\StoreKeeper\MedicalMachineRequest\MedicalMachineRequestController;
 use App\Http\Controllers\StoreKeeper\MedicalSupplies\MedicalSuppliesController;
 use App\Http\Controllers\StoreKeeper\Medicine\MedicineController;
 use App\Http\Controllers\StoreKeeper\StoreKeeperController;
@@ -76,4 +77,19 @@ Route::middleware(['StoreKeeper'])->name('storeKeeper.')->prefix('storeKeeper')-
      Route::put('/medicalSupplies/delete/custom/quantity/{id}', [MedicalSuppliesController::class, 'deleteCustomQuantity'])->name('medicalSupplies.delete.custom.quantity');
  
      Route::delete('/medicalSupplies/softDelete/{id}', [MedicalSuppliesController::class, 'softDelete'])->name('medicalSupplies.soft.delete');
+
+
+     //============================== Medical Machine Request ==================
+
+
+     Route::get('/medicalMachineRequest/new', [MedicalMachineRequestController::class, 'newMedicalMachineRequest'])->name('medicalMachineRequest.new');
+
+     Route::put('/medicalMachineRequest/new/accept/{id}', [MedicalMachineRequestController::class, 'newMedicalMachineRequestAccept'])->name('medicalMachineRequest.new.accept');
+
+     Route::put('/medicalMachineRequest/new/return/{id}', [MedicalMachineRequestController::class, 'newMedicalMachineRequestReturn'])->name('medicalMachineRequest.new.return');
+
+     Route::put('/medicalMachineRequest/new/reject/{id}', [MedicalMachineRequestController::class, 'newMedicalMachineRequestReject'])->name('medicalMachineRequest.new.reject');
+
+     Route::get('/medicalMachineRequest/history', [MedicalMachineRequestController::class, 'historyMedicalMachineRequest'])->name('medicalMachineRequest.history');
+
 });
