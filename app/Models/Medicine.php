@@ -14,6 +14,7 @@ class Medicine extends Model
         'name',
         'calibres',
         'quantity',
+        'deletedQuantity',
         'price',
         'details',
         'img',

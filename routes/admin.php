@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Department\DepartmentController;
 use App\Http\Controllers\Admin\DepartmentEmploye\DepartmentEmployeController;
 use App\Http\Controllers\Admin\Doctor\DoctorController;
 use App\Http\Controllers\Admin\Floor\FloorController;
+use App\Http\Controllers\Admin\MedicineAndMedicalSuppliesArchive\MedicineAndMedicalSuppliesArchiveController;
 use App\Http\Controllers\Admin\Nurse\NurseController;
 use App\Http\Controllers\Admin\Reception\ReceptionController;
 use App\Http\Controllers\Admin\Room\RoomController;
@@ -258,4 +259,21 @@ Route::middleware(['Admin'])->name('admin.')->prefix('admin')->group(function ()
   Route::delete('/floor/forceDelete/{id}', [FloorController::class, 'forceDelete'])->name('floor.force.delete');
 
   Route::post('/floor/restore/{id}', [FloorController::class, 'restore'])->name('floor.restore');
+
+
+  //================================ Medicine And Medical Supplies Archive Route ========================
+
+  Route::get('/medicine/medicalSupplies/archive/index', [MedicineAndMedicalSuppliesArchiveController::class, 'indexArchive'])->name('medicineMedicalSupplies.index.archive');
+
+  Route::put('/medicine/medicalSupplies/archive/restor/custom/medicine/{id}', [MedicineAndMedicalSuppliesArchiveController::class, 'restoreCustomMedicine'])->name('medicineMedicalSupplies.restore.custom.medicine');
+
+  Route::put('/medicine/medicalSupplies/archive/restor/custom/medicalSupplies/{id}', [MedicineAndMedicalSuppliesArchiveController::class, 'restoreCustomMedicalSupplies'])->name('medicineMedicalSupplies.restore.custom.medicalSupplies');
+
+  Route::put('/medicine/medicalSupplies/archive/restor/all/medicine/{id}', [MedicineAndMedicalSuppliesArchiveController::class, 'restoreAllMedicine'])->name('medicineMedicalSupplies.restore.all.medicine');
+
+  Route::put('/medicine/medicalSupplies/archive/restor/all/medicalSupplies/{id}', [MedicineAndMedicalSuppliesArchiveController::class, 'restoreAllMedicalSupplies'])->name('medicineMedicalSupplies.restore.all.medicalSupplies');
+
+  Route::delete('/medicine/medicalSupplies/archive/forceDelete/all/medicine/{id}', [MedicineAndMedicalSuppliesArchiveController::class, 'forceDeleteMedicine'])->name('medicineMedicalSupplies.force.delete.all.medicine');
+
+  Route::delete('/medicine/medicalSupplies/archive/forceDelete/all/medicalSupplies/{id}', [MedicineAndMedicalSuppliesArchiveController::class, 'forceDeleteMedicalSupplies'])->name('medicineMedicalSupplies.force.delete.all.medicalSupplies');
 });

@@ -107,13 +107,51 @@ class MedicalSuppliesController extends Controller
         }
     }
 
+    public function deleteCustomQuantity(Request $request , $id)
+    {
+        $medicalSupplies = MedicalSupplies::findOrFail($id);
+        $deletedQuantity = $request->input('deletedQuantity');
+        $originalQuantity = $medicalSupplies->quantity;
+
+        if($deletedQuantity > $medicalSupplies->quantity)
+        {
+            return redirect()->back()->with('error_message', 'The Deleted Medical Supplies Bigest Than The Original Quantity Successfully'); 
+        }else if($deletedQuantity == $medicalSupplies->quantity)
+        {
+            $newMedicalSuppliesQuantity = $originalQuantity - $deletedQuantity;
+            $medicalSupplies->update([
+                'quantity' => $newMedicalSuppliesQuantity,
+                'deletedQuantity' => $medicalSupplies->deletedQuantity + $deletedQuantity,
+            ]); 
+            // $medicalSupplies->delete();
+
+            return redirect()->back()->with('success_message', 'Medical Supplies Deleted Successfully');
+        }else
+        {
+            $newMedicalSuppliesQuantity = $originalQuantity - $deletedQuantity;
+            $medicalSupplies->update([
+                'quantity' => $newMedicalSuppliesQuantity,
+                'deletedQuantity' => $medicalSupplies->deletedQuantity + $deletedQuantity,
+            ]); 
+            return redirect()->back()->with('success_message', 'Medical Supplies Deleted Successfully');
+        }
+    }
+
     //حذف مستلزم طبي ونقله للارشيف 
 
     public function softDelete($id)
     {
         $medicalSupplies = MedicalSupplies::findOrFail($id);
 
-        $medicalSupplies->delete();
+        $newMedicalSuppliesQuantity = 0;
+
+        $medicalSupplies->update([
+            'deletedQuantity' => $medicalSupplies->deletedQuantity + $medicalSupplies->quantity,
+            'quantity' => $newMedicalSuppliesQuantity,
+        ]); 
+
+
+        // $medicalSupplies->delete();
 
         return redirect()->route('storeKeeper.medicalSupplies.index')->with('success_message', 'Medical Supplies Deleted Successfully');
     }
