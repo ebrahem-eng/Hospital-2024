@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Department\DepartmentController;
 use App\Http\Controllers\Admin\DepartmentEmploye\DepartmentEmployeController;
 use App\Http\Controllers\Admin\Doctor\DoctorController;
 use App\Http\Controllers\Admin\Floor\FloorController;
+use App\Http\Controllers\Admin\MedicalMachineRequest\MedicalMachineRequestController;
 use App\Http\Controllers\Admin\MedicineAndMedicalSuppliesArchive\MedicineAndMedicalSuppliesArchiveController;
 use App\Http\Controllers\Admin\Nurse\NurseController;
 use App\Http\Controllers\Admin\Reception\ReceptionController;
@@ -276,4 +277,15 @@ Route::middleware(['Admin'])->name('admin.')->prefix('admin')->group(function ()
   Route::delete('/medicine/medicalSupplies/archive/forceDelete/all/medicine/{id}', [MedicineAndMedicalSuppliesArchiveController::class, 'forceDeleteMedicine'])->name('medicineMedicalSupplies.force.delete.all.medicine');
 
   Route::delete('/medicine/medicalSupplies/archive/forceDelete/all/medicalSupplies/{id}', [MedicineAndMedicalSuppliesArchiveController::class, 'forceDeleteMedicalSupplies'])->name('medicineMedicalSupplies.force.delete.all.medicalSupplies');
+
+  //============================== Medical Machine Request ==================
+
+
+  Route::get('/medicalMachineRequest/new', [MedicalMachineRequestController::class, 'newMedicalMachineRequest'])->name('medicalMachineRequest.new');
+
+  Route::put('/medicalMachineRequest/new/accept/{id}', [MedicalMachineRequestController::class, 'newMedicalMachineRequestAccept'])->name('medicalMachineRequest.new.accept');
+
+  Route::put('/medicalMachineRequest/new/reject/{id}', [MedicalMachineRequestController::class, 'newMedicalMachineRequestReject'])->name('medicalMachineRequest.new.reject');
+
+  Route::get('/medicalMachineRequest/history', [MedicalMachineRequestController::class, 'historyMedicalMachineRequest'])->name('medicalMachineRequest.history');
 });

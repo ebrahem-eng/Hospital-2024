@@ -81,7 +81,7 @@
                                                                 required="">
                                                                 @foreach ($allMedicalSupplies as $medicalSupplieses)
                                                                     <option value="{{ $medicalSupplieses->id }}">
-                                                                        {{ $medicalSupplieses->name }}</option>
+                                                                        {{ $medicalSupplieses->name }} - {{$medicalSupplieses->quantity}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -128,21 +128,39 @@
                                                         </a>
                                                         <div class="dropdown-menu">
                                                             <div class="dropdown-title">Options</div>
-                                                            <a href="#" class="dropdown-item has-icon"><i
-                                                                    class="fas fa-eye"></i> View</a>
-                                                            <a href="#" class="dropdown-item has-icon"><i
-                                                                    class="fas fa-list"></i> Detail</a>
-                                                            <div class="dropdown-divider"></div>
+                                                            {{-- <a href="#" class="dropdown-item has-icon"><i
+                                                                    class="fas fa-eye"></i> View</a> --}}
+                                                                    <form action="{{ route('doctor.inspection.medicalSupplies.edit.inspection', $medicalSupply->id) }}" method="Get">
+                                                                        @csrf
+                                                                        <input type="hidden" name="inspectionID" value="{{$inspectionID}}" />
+                                                                        <button type="submit" class="dropdown-item has-icon">
+                                                                            <i class="fas fa-edit"></i> Edit
+                                                                        </button>
+                                                                    </form>
+                                                                    
+                                                            {{-- <div class="dropdown-divider"></div>
                                                             <a href="#" class="dropdown-item has-icon text-danger"
-                                                                data-confirm="Wait, wait, wait...|This action can't be undone. Want to take risks?"
+                                                                data-confirm="Are You Shure ? Delete The Medical Supplies"
                                                                 data-confirm-text-yes="Yes, IDC"><i
-                                                                    class="fas fa-trash-alt"></i> Archive</a>
+                                                                    class="fas fa-trash-alt"></i> Delete</a> --}}
+
+                                                                    <form action="{{ route('doctor.inspection.medicalSupplies.delete.inspection', $medicalSupply->id) }}" method="POST" class="dropdown-item has-icon text-danger" onsubmit="return confirm('Are you sure? Delete the Medical Supplies');">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <input type="hidden" name="inspectionID" value="{{$inspectionID}}" />
+                                                                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline text-danger">
+                                                                            <i class="fas fa-trash-alt"></i> Delete
+                                                                        </button>
+                                                                    </form>
+                                                                    
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <p>Medical Supplies Name "<a
-                                                        href="#">{{ $medicalSupply->name }}</a>" with Quantity
-                                                    {{ $medicalSuppliesQuantities[$key] }}.</p>
+                                                        href="#">{{ $medicalSupply->name }}</a>
+                                                        "with Quantity<p style="color: green">
+                                                    {{$medicalSuppliesQuantities[$key] }}.</p>
+                                                </p>
                                             </div>
                                         </div>
                                     @endforeach

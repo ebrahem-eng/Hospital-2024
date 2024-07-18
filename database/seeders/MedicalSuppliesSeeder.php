@@ -22,5 +22,15 @@ class MedicalSuppliesSeeder extends Seeder
             'img' => 'img1',
             'created_by' => '1',
         ]);
+
+        MedicalSupplies::create([
+            'name' => 'medicalSupplies2',
+            'type' => 'no type',
+            'status' => '1',
+            'quantity' => '20',
+            'details' => 'no details',
+            'img' => 'img1',
+            'created_by' => '1',
+        ]);
     }
 }

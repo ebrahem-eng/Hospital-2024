@@ -17,6 +17,11 @@ return new class extends Migration
             $table->foreignId('medicalMachineID')->references('id')->on('medical_machines');
             $table->foreignId('storeKeeperID')->nullable()->references('id')->on('store_keepers');
             $table->foreignId('adminID')->nullable()->references('id')->on('admins');
+            $table->integer('quantity');
+            $table->date('takenDate');
+            $table->date('returnDateDoctor');
+            $table->tinyInteger('statusStoreKeeperReturned')->nullable();
+            $table->date('returnDateStoreKeeper')->nullable();
             $table->string('detailsRequest');
             $table->string('refuseCause')->nullable();
             $table->tinyInteger('status');

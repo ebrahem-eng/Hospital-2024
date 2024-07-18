@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Add Medical Machine Request</title>
+    <title>Update Medical Supplies Inspection</title>
 
     @include('layouts.Doctor.LinkHeader')
 
@@ -27,13 +27,14 @@
             <div class="main-content">
                 <section class="section">
 
-                    <div class="col-10 col-md-6 col-lg-12">
+                    <div class="col-8 col-md-6 col-lg-8">
                         <div class="card">
-                            <form method="POST" action="{{ route('doctor.medicalMachineRequest.store') }}"
+                            <form method="POST" action="{{ route('doctor.inspection.medicalSupplies.update.inspection' , $medicalSuppliesInspection->id)}}"
                                 enctype="multipart/form-data">
                                 @csrf
+                                @method('put')
                                 <div class="card-header">
-                                    <h4>Add Medical Machine Request</h4>
+                                    <h4>Update Medical Supplies Inspection</h4>
                                 </div>
 
                                 {{-- message Section --}}
@@ -64,45 +65,18 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-5">
-                                                    <label>Choose Medical Machine</label>
-                                                    <select class="form-control" name="medicalMachineID"
-                                                        required="">
-                                                        @foreach ($medicalMachines as $medicalMachine)
-                                                            <option value="{{ $medicalMachine->id }}">
-                                                                {{ $medicalMachine->name }} - {{$medicalMachine->quantity}} </option>
-                                                        @endforeach
-                                                    </select>
+
+                                            <div class="col">
+                                                <label>Medical Supplise Name</label>
+                                                <input type="text" class="form-control" name="medicalSuppliesName"
+                                                    required="" value="{{$medicalSupplies->name}} - {{$medicalSupplies->quantity}}" disabled>
                                             </div>
 
                                             <div class="col">
-                                                <label>Details Request</label>
-                                                <input type="text" class="form-control" name="detailsRequest"
-                                                    required="">
+                                                <label>Medical Supplise Inspection Quantity</label>
+                                                <input type="text" class="form-control" name="medicalSuppliesInspectionQuantity"
+                                                    required="" value="{{$medicalSuppliesInspection->quantity}}">
                                             </div>
-
-                                            <div class="col">
-                                                <label>Quantity</label>
-                                                <input type="number" class="form-control" name="quantity"
-                                                    required="">
-                                            </div>
-                                        </div>
-
-                                        <br>
-                                        <div class="row">
-
-                                            <div class="col">
-                                                <label>Taken Date</label>
-                                                <input type="date" class="form-control" name="takenDate"
-                                                    required="">
-                                            </div>
-
-                                            <div class="col">
-                                                <label>Return Date</label>
-                                                <input type="date" class="form-control" name="returnDateDoctor"
-                                                    required="">
-                                            </div>
-
                                         </div>
 
                                         <br>
@@ -111,7 +85,7 @@
 
                                 </div>
                                 <div class="card-footer text-center">
-                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                    <button class="btn btn-primary" type="submit">Update</button>
                                 </div>
                             </form>
                         </div>

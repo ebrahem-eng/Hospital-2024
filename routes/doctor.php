@@ -69,6 +69,12 @@ Route::middleware(['Doctor'])->name('doctor.')->prefix('doctor')->group(function
 
     Route::get('inspection/medicalSupplies/store/inspection', [InspectionController::class, 'storeMedicalSuppliesInspection'])->name('inspection.medicalSupplies.store.inspection');
 
+    Route::get('inspection/medicalSupplies/edit/inspection/{id}' , [InspectionController::class , 'editMedicalSuppliesInspectionQuantity'])->name('inspection.medicalSupplies.edit.inspection');
+
+    Route::put('inspection/medicalSupplies/update/inspection/{id}' , [InspectionController::class , 'updateMedicalSuppliesInspectionQuantity'])->name('inspection.medicalSupplies.update.inspection');
+
+    Route::delete('inspection/medicalSupplies/delete/inspection/{id}' , [InspectionController::class , 'deleteMedicalSuppliesInspectionQuantity'])->name('inspection.medicalSupplies.delete.inspection');
+
     Route::get('inspection/medicalRecord/choose/medicine/{id}', [InspectionController::class, 'chooseMedicine'])->name('inspection.medicalRecord.choose.medicine');
 
     Route::get('inspection/medicalRecord/store/choose/medicine', [InspectionController::class, 'storeMedicineInspection'])->name('inspection.medicalRecord.store.medicine');

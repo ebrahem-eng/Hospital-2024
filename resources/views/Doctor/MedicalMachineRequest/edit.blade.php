@@ -81,10 +81,31 @@
                                                 <input type="text" class="form-control" name="detailsRequest"
                                                     required="" value="{{$medicalMachineRequest->detailsRequest}}">
                                             </div>
+
+                                            <div class="col">
+                                                <label>Quantity</label>
+                                                <input type="number" class="form-control" name="quantity"
+                                                    required="" value="{{$medicalMachineRequest->quantity}}">
+                                            </div>
                                         </div>
 
                                         <br>
 
+                                        <div class="row">
+
+                                            <div class="col">
+                                                <label>Taken Date</label>
+                                                <input type="date" class="form-control" name="takenDate"
+                                                    required="" value="{{$medicalMachineRequest->takenDate}}" >
+                                            </div>
+
+                                            <div class="col">
+                                                <label>Return Date</label>
+                                                <input type="date" class="form-control" name="returnDateDoctor"
+                                                    required="" value="{{$medicalMachineRequest->returnDateDoctor}}">
+                                            </div>
+
+                                        </div>
                                     </div>
 
                                 </div>

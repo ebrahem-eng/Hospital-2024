@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Medical Machine Request Table</title>
+    <title>Medical Machine Request History Table</title>
 
-    @include('layouts.Doctor.LinkHeader')
+    @include('layouts.StoreKeeper.LinkHeader')
 
 </head>
 
@@ -15,12 +15,12 @@
         <div class="main-wrapper main-wrapper-1">
             <div class="navbar-bg"></div>
 
-            @include('layouts.Doctor.Header')
+            @include('layouts.StoreKeeper.Header')
 
             <div class="main-sidebar sidebar-style-2">
 
 
-                @include('layouts.Doctor.Sidebar')
+                @include('layouts.StoreKeeper.Sidebar')
             </div>
 
             <!-- Main Content -->
@@ -31,7 +31,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Medical Machine Request Table</h4>
+                                    <h4>Medical Machine Request History Table</h4>
                                 </div>
 
                                 {{-- message Section --}}
@@ -102,9 +102,9 @@
                                                         <td><img src="{{ asset('image/' . $medicalMachineRequest->medicalMachine->img) }}"
                                                                 style="width: 100px; height: 100px;"></td>
 
-                                                                <td>
-                                                                    {{ $medicalMachineRequest->quantity }}
-                                                                </td>
+                                                        <td>
+                                                            {{ $medicalMachineRequest->quantity }}
+                                                        </td>
 
                                                         <td>
                                                             {{ $medicalMachineRequest->storeKeeper->name ?? '-' }}
@@ -123,19 +123,19 @@
                                                         <td> {{ $medicalMachineRequest->admin->email ?? '-' }}</td>
 
                                                         <td>
-                                                            @if($medicalMachineRequest->status == 0)
-                                                            Pending Store Keeper Accept
+                                                            @if ($medicalMachineRequest->status == 0)
+                                                                Pending Store Keeper Accept
                                                             @elseif($medicalMachineRequest->status == 1)
-                                                            Accepted By Store Keeper Pending Admin Accept
+                                                                Accepted By Store Keeper Pending Admin Accept
                                                             @elseif($medicalMachineRequest->status == 2)
-                                                             Accepted By Admin
-                                                             @elseif($medicalMachineRequest->status == 3)
-                                                             Reject By Store Keeper
-                                                             @elseif($medicalMachineRequest->status == 4)
-                                                             Reject By Admin
-                                                             @elseif($medicalMachineRequest->status == 5)
-                                                             Canceled By Doctor
-                                                             @endif
+                                                                Accepted By Admin
+                                                            @elseif($medicalMachineRequest->status == 3)
+                                                                Reject By Store Keeper
+                                                            @elseif($medicalMachineRequest->status == 4)
+                                                                Reject By Admin
+                                                            @elseif($medicalMachineRequest->status == 5)
+                                                                Canceled By Doctor
+                                                            @endif
                                                         </td>
 
                                                         <td>{{ $medicalMachineRequest->refuseCause ?? '-' }}</td>
@@ -147,17 +147,18 @@
                                                         <td>{{ $medicalMachineRequest->returnDateDoctor }}</td>
 
                                                         <td>
-                                                            @if($medicalMachineRequest->statusStoreKeeperReturned == 0)
-                                                            Pending Doctor Returned
+                                                            @if ($medicalMachineRequest->statusStoreKeeperReturned == 0)
+                                                                Pending Doctor Returned
                                                             @else
-                                                             Returned Successfully
+                                                                Returned Successfully
                                                             @endif
                                                         </td>
 
-                                                        <td>{{ $medicalMachineRequest->returnDateStoreKeeper ?? '-' }}</td>
+                                                        <td>{{ $medicalMachineRequest->returnDateStoreKeeper ?? '-' }}
+                                                        </td>
 
-                                                        <td> {{ $medicalMachineRequest->created_at }} </td>
-                                                        <td> {{ $medicalMachineRequest->updated_at }} </td>
+                                                        <td>{{ $medicalMachineRequest->created_at }}</td>
+                                                        <td>{{ $medicalMachineRequest->updated_at }}</td>
                                                         <td>
                                                             <div class="btn-group">
                                                                 <button type="button"
@@ -166,23 +167,23 @@
                                                                     aria-expanded="false">
                                                                     <span class="visually-hidden">Detail</span>
                                                                 </button>
-                                                                @if($medicalMachineRequest->status == 0)
                                                                 <div class="dropdown-menu">
-                                                                    <a class="dropdown-item"
-                                                                        href="{{ route('doctor.medicalMachineRequest.edit', $medicalMachineRequest->id) }}"
-                                                                        style="size: 20px;">Edit</a>
+                                                                    @if ($medicalMachineRequest->status == 2 && $medicalMachineRequest->statusStoreKeeperReturned == 0 )
 
-                                                                    <form
-                                                                        action="{{ route('doctor.medicalMachineRequest.cancel', $medicalMachineRequest->id) }}"
-                                                                        method="POST">
-                                                                        @csrf
-                                                                        @method('put')
-                                                                        <button class="dropdown-item" type="submit"
-                                                                            style="color: red">Cancel</button>
-                                                                    </form>
+                                                                        <form action="{{ route('storeKeeper.medicalMachineRequest.new.return', $medicalMachineRequest->id) }}" method="POST">
+                                                                            @csrf
+                                                                            @method('put')
+                                                                            <button class="dropdown-item" type="button" style="color: green" onclick="toggleDateInput({{ $medicalMachineRequest->id }})">Return
+                                                                                Medical Machine</button>
+                                                                            <div id="reject-input-{{ $medicalMachineRequest->id }}" class="reject-input" style="display: none;">
+                                                                                <input type="date" name="returnDateStoreKeeper" class="form-control" placeholder="Cause for rejection">
+                                                                                <button class="btn btn-success mt-2" type="submit">Submit Date</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    @endif
 
                                                                 </div>
-                                                                @endif
+
                                                             </div>
                                                         </td>
 
@@ -192,6 +193,36 @@
                                             </tbody>
 
                                         </table>
+
+                                        <script>
+                                            function toggleDateInput(id) {
+                                                var inputDiv = document.getElementById('reject-input-' + id);
+                                                if (inputDiv.style.display === 'none') {
+                                                    inputDiv.style.display = 'block';
+                                                } else {
+                                                    inputDiv.style.display = 'none';
+                                                }
+                                            }
+                                        </script>
+                                        
+                                        <style>
+                                            .reject-input {
+                                                padding: 10px;
+                                                border: 1px solid #ddd;
+                                                border-radius: 5px;
+                                                background-color: #f9f9f9;
+                                                margin-top: 10px;
+                                            }
+                                        
+                                            .reject-input .form-control {
+                                                width: 100%;
+                                                margin-bottom: 10px;
+                                            }
+                                        
+                                            .reject-input .btn {
+                                                width: 100%;
+                                            }
+                                        </style>
                                     </div>
                                 </div>
                             </div>
@@ -204,7 +235,7 @@
         </div>
     </div>
 
-    @include('layouts.Doctor.LinkJS')
+    @include('layouts.StoreKeeper.LinkJS')
 </body>
 
 </html>
