@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Patient extends Model
 {
-    use HasFactory;
+    use HasFactory , SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -32,7 +33,7 @@ class Patient extends Model
 
     public function reception()
     {
-        return $this->hasMany(Reception::class, 'created_by');
+        return $this->belongsTo(Reception::class, 'created_by');
     }
 
       //علاقة المريض مع  الادوية

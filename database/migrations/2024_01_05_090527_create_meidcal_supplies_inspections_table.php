@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('meidcal_supplies_inspections', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity');
-            $table->foreignId('inspectionID')->references('id')->on('inspections');
+            $table->foreignId('inspectionID')->references('id')->on('inspections')->cascadeOnDelete();
             $table->foreignId('medicalSuppliesID')->references('id')->on('medical_supplies');
             $table->timestamps();
         });
