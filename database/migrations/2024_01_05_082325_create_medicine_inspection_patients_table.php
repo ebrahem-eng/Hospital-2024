@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('details');
             $table->foreignId('medicineID')->references('id')->on('medicines');
             $table->foreignId('patientID')->references('id')->on('patients');
-            $table->foreignId('inspectionID')->references('id')->on('inspections');
+            $table->foreignId('inspectionID')->references('id')->on('inspections')->cascadeOnDelete();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -37,7 +37,7 @@ class PatientMedicalRecord extends Model
 
     public function reciptionist()
     {
-        return $this->belongsTo(Doctor::class, 'created_by_receptionist');
+        return $this->belongsTo(Reception::class, 'created_by_receptionist');
     }
 
     //  علاقة السجل الطبي مع الطبيب الذي انشأه

@@ -55,6 +55,11 @@ return [
             'driver' => 'session',
             'provider' => 'storeKeepers',
         ],
+
+        'reception' => [
+            'driver' => 'session',
+            'provider' => 'receptions',
+        ],
     ],
 
     /*
@@ -93,6 +98,11 @@ return [
         'storeKeepers' => [
             'driver' => 'eloquent',
             'model' => App\Models\StoreKeeper::class,
+        ],
+
+        'receptions' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Reception::class,
         ],
 
         // 'users' => [

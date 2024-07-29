@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('resultInspection');
             $table->string('details');
-            $table->foreignId('paitentMedicalRecordID')->references('id')->on('patient_medical_records');
+            $table->foreignId('paitentMedicalRecordID')->references('id')->on('patient_medical_records')->cascadeOnDelete();
             $table->softDeletes();
             $table->timestamps();
         });

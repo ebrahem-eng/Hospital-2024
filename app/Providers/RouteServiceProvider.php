@@ -44,6 +44,9 @@ class RouteServiceProvider extends ServiceProvider
 
                 Route::middleware('storekeeper')
                 ->group(base_path('routes/storeKeeper.php'));
+
+                Route::middleware('reception')
+                ->group(base_path('routes/reception.php'));
         });
     }
 }
