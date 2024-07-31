@@ -74,6 +74,24 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
+        'departmentEmploye' => [
+            \App\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \App\Http\Middleware\VerifyCsrfToken::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+
+        'nurse' => [
+            \App\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \App\Http\Middleware\VerifyCsrfToken::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+
 
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
@@ -105,5 +123,7 @@ class Kernel extends HttpKernel
         'Doctor' => \App\Http\Middleware\Doctor\Auth\Auth::class,
         'StoreKeeper' => \App\Http\Middleware\StoreKeeper\Auth\Auth::class,
         'Reception' => \App\Http\Middleware\Reception\Auth\Auth::class,
+        'DepartmentEmploye' => \App\Http\Middleware\DepartmentEmploye\Auth\Auth::class,
+        'Nurse' => \App\Http\Middleware\Nurse\Auth\Auth::class,
     ];
 }
