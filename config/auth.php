@@ -60,6 +60,16 @@ return [
             'driver' => 'session',
             'provider' => 'receptions',
         ],
+
+        'departmentEmploye' => [
+            'driver' => 'session',
+            'provider' => 'departmentEmployes',
+        ],
+
+        'nurse' => [
+            'driver' => 'session',
+            'provider' => 'nurses',
+        ],
     ],
 
     /*
@@ -104,6 +114,17 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Reception::class,
         ],
+
+        'departmentEmployes' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\DepartmentEmploye::class,
+        ],
+
+        'nurses' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Nurse::class,
+        ],
+        
 
         // 'users' => [
         //     'driver' => 'database',
