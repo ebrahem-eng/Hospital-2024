@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Department Room Reservation Table</title>
 
-    @include('layouts.DepartmentEmploye.LinkHeader')
+    @include('layouts.Nurse.LinkHeader')
 
 </head>
 
@@ -15,12 +15,12 @@
         <div class="main-wrapper main-wrapper-1">
             <div class="navbar-bg"></div>
 
-            @include('layouts.DepartmentEmploye.Header')
+            @include('layouts.Nurse.Header')
 
             <div class="main-sidebar sidebar-style-2">
 
 
-                @include('layouts.DepartmentEmploye.Sidebar')
+                @include('layouts.Nurse.Sidebar')
             </div>
 
             <!-- Main Content -->
@@ -117,17 +117,15 @@
                                                                     <span class="visually-hidden">Detail</span>
                                                                 </button>
                                                                 <div class="dropdown-menu">
-                                                            @if($departmentPatientRoom->status == 1)
-                                                            <form
-                                                            action="{{ route('departmentEmploye.departmentRoom.reservation.leave', $departmentPatientRoom->id) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('put')
-                                                            <button class="dropdown-item" type="submit"
-                                                                style="color: red">Leave</button>
-                                                        </form>
-                                                            @endif
-                                                                  
+                                                            
+                                                                    <form
+                                                                        action="{{ route('nurse.medicine.medicalSupplies.patient.inspection', $departmentPatientRoom->patient->id) }}"
+                                                                        method="get">
+                                                                        @csrf
+                                                                        <input type="hidden" value="{{$departmentPatientRoom->id}}" name="patientRoomID"/>
+                                                                        <button class="dropdown-item" type="submit"
+                                                                            style="color: rgb(92, 182, 238)">Medicine & Medical Supplise Inspection</button>
+                                                                    </form>
 
                                                                 </div>
                                                             </div>
@@ -151,7 +149,7 @@
         </div>
     </div>
 
-    @include('layouts.DepartmentEmploye.LinkJS')
+    @include('layouts.Nurse.LinkJS')
 </body>
 
 </html>
