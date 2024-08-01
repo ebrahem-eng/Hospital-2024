@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Department Room Reservation Table</title>
+    <title>History Department Room Reservation Table</title>
 
-    @include('layouts.DepartmentEmploye.LinkHeader')
+    @include('layouts.Nurse.LinkHeader')
 
 </head>
 
@@ -15,12 +15,12 @@
         <div class="main-wrapper main-wrapper-1">
             <div class="navbar-bg"></div>
 
-            @include('layouts.DepartmentEmploye.Header')
+            @include('layouts.Nurse.Header')
 
             <div class="main-sidebar sidebar-style-2">
 
 
-                @include('layouts.DepartmentEmploye.Sidebar')
+                @include('layouts.Nurse.Sidebar')
             </div>
 
             <!-- Main Content -->
@@ -31,7 +31,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Dapartment Room Reservation Table</h4>
+                                    <h4>History Dapartment Room Reservation Table</h4>
                                 </div>
 
                                 {{-- message Section --}}
@@ -76,7 +76,7 @@
                                                     <th>Room Type</th>
                                                     <th>Created Date</th>
                                                     <th>Last Update Date</th>
-                                                    <th>Action</th>
+                                                    {{-- <th>Action</th> --}}
                                                 </tr>
                                             </thead>
 
@@ -108,7 +108,7 @@
                                                         <td>{{ $departmentPatientRoom->room->type }}</td>
                                                         <td>{{ $departmentPatientRoom->created_at }}</td>
                                                         <td>{{ $departmentPatientRoom->updated_at }}</td>
-                                                        <td>
+                                                        {{-- <td>
                                                             <div class="btn-group">
                                                                 <button type="button"
                                                                     class="btn btn-secondary dropdown-toggle"
@@ -117,21 +117,19 @@
                                                                     <span class="visually-hidden">Detail</span>
                                                                 </button>
                                                                 <div class="dropdown-menu">
-                                                            @if($departmentPatientRoom->status == 1)
-                                                            <form
-                                                            action="{{ route('departmentEmploye.departmentRoom.reservation.leave', $departmentPatientRoom->id) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('put')
-                                                            <button class="dropdown-item" type="submit"
-                                                                style="color: red">Leave</button>
-                                                        </form>
-                                                            @endif
-                                                                  
+                                                            
+                                                                    <form
+                                                                        action="{{ route('departmentEmploye.departmentRoom.reservation.leave', $departmentPatientRoom->id) }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        @method('put')
+                                                                        <button class="dropdown-item" type="submit"
+                                                                            style="color: rgb(92, 182, 238)">History Medicine & Medical Supplise History</button>
+                                                                    </form>
 
                                                                 </div>
                                                             </div>
-                                                        </td>
+                                                        </td> --}}
 
                                                     </tr>
                                                 @endforeach
@@ -151,7 +149,7 @@
         </div>
     </div>
 
-    @include('layouts.DepartmentEmploye.LinkJS')
+    @include('layouts.Nurse.LinkJS')
 </body>
 
 </html>
