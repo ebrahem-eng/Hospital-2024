@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('age');
             $table->string('phone');
             $table->string('img')->nullable();
-            $table->foreignId('created_by')->references('id')->on('receptions');
+            $table->foreignId('created_by')->nullable()->references('id')->on('receptions');
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

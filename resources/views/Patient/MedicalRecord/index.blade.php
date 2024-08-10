@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Patient Archive Table</title>
+    <title>Medical Record Table</title>
 
-    @include('layouts.Reception.LinkHeader')
+    @include('layouts.Patient.LinkHeader')
 
 </head>
 
@@ -15,12 +15,12 @@
         <div class="main-wrapper main-wrapper-1">
             <div class="navbar-bg"></div>
 
-            @include('layouts.Reception.Header')
+            @include('layouts.Patient.Header')
 
             <div class="main-sidebar sidebar-style-2">
 
 
-                @include('layouts.Reception.Sidebar')
+                @include('layouts.Patient.Sidebar')
             </div>
 
             <!-- Main Content -->
@@ -31,7 +31,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Patient Archive Table</h4>
+                                    <h4>Medical Record Table</h4>
                                 </div>
 
                                 {{-- message Section --}}
@@ -62,63 +62,63 @@
                                                     <th class="text-center">
                                                         #
                                                     </th>
-                                                    <th>Name</th>
-                                                    <th>Email</th>
-                                                    <th>Gender</th>
-                                                    <th>Status</th>
-                                                    <th>Age</th>
-                                                    <th>Phone</th>
-                                                    <th>Image</th>
-                                                    <th>Created By</th>
+                                                    <th>Doctor Name</th>
+                                                    <th>Patient Name</th>
+                                                    <th>Patient Gender</th>
+                                                    <th>Patient Age</th>
+                                                    <th>Patient Phone</th>
+                                                    <th>Patient Image</th>
+                                                    <th>Details</th>
+                                                    <th>Receptionist Created Name</th>
+                                                    <th>Doctor Created Name</th>
                                                     <th>Created Date</th>
                                                     <th>Last Update Date</th>
-                                                    <th>Deleted Date</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
 
                                             <tbody>
-                                                @foreach ($patients as $patient)
+                                                @foreach ($medicalRecords as $medicalRecord)
                                                     <tr>
                                                         <td>
-                                                            {{ $patient->id }}
+                                                            {{ $medicalRecord->id }}
                                                         </td>
-                                                        <td>{{ $patient->name }}</td>
-                                                        <td class="align-middle">
-
-                                                            {{ $patient->email }}
+                                                        <td>{{ $medicalRecord->doctor->name }}</td>
+                                                        <td>
+                                                            {{ $medicalRecord->patient->name }}
                                                         </td>
                                                         <td>
-                                                            @if ($patient->gender == 0)
-                                                                Female
+                                                            @if ($medicalRecord->patient->gender == 1)
+                                                                <div>Male</div>
                                                             @else
-                                                                Male
-                                                            @endif
-                                                        </td>
-
-                                                        <td>
-                                                            @if ($patient->status == 1)
-                                                                <div class="badge badge-success">Active</div>
-                                                            @else
-                                                                <div class="badge badge-danger">Not Active</div>
+                                                                <div>Female</div>
                                                             @endif
 
                                                         </td>
-                                                        <td>{{ $patient->age }}</td>
-                                                        <td>{{ $patient->phone }}</td>
-                                                        <td><img src="{{ asset('image/' . $patient->img) }}"
+
+                                                        <td>
+                                                            {{ $medicalRecord->patient->age }}
+                                                        </td>
+
+                                                        <td>
+                                                            {{ $medicalRecord->patient->phone }}
+                                                        </td>
+
+                                                        <td><img src="{{ asset('image/' . $medicalRecord->patient->img) }}"
                                                                 style="width: 100px; height: 100px;"></td>
-                                    
-                                                         <td>{{ $patient->reception->name ?? '-'}}</td>
-                                                        <td>
-                                                            {{ $patient->created_at }}
-                                                        </td>
-                                                        <td>
-                                                            {{ $patient->updated_at }}
-                                                        </td>
 
-                                                         <td>
-                                                            {{ $patient->deleted_at }}
+                                                        <td>{{ $medicalRecord->details }}</td>
+
+                                                        <td>{{ $medicalRecord->reciptionist->name ?? '-' }}</td>
+
+
+                                                        <td>{{ $medicalRecord->doctorCreated->name ?? '-'}}</td>
+
+                                                        <td>
+                                                            {{ $medicalRecord->created_at }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $medicalRecord->updated_at }}
                                                         </td>
                                                         <td>
                                                             <div class="btn-group">
@@ -129,19 +129,12 @@
                                                                     <span class="visually-hidden">Detail</span>
                                                                 </button>
                                                                 <div class="dropdown-menu">
-                                                                    <form action="{{route('reception.patient.restore' , $patient->id)}}" method="POST">
-                                                                        @csrf
-                                                                        <button class="dropdown-item"
-                                                                        type="submit">Restore</button>
-                                                                    </form>
-                                                                
-                                                                    <form
-                                                                        action="{{ route('reception.patient.force.delete', $patient->id) }}"
-                                                                        method="POST">
-                                                                        @csrf
-                                                                        @method('delete')
-                                                                        <button class="dropdown-item" type="submit"
-                                                                            style="color: red">Force Delete</button>
+                                                            
+
+                                                                        <a class="dropdown-item"
+                                                                        href="{{ route('patient.medicalRecord.inspections', $medicalRecord->id) }}"
+                                                                        style="size: 20px;">Inspections</a>
+                                                                   
                                                                     </form>
 
                                                                 </div>
@@ -166,7 +159,7 @@
         </div>
     </div>
 
-    @include('layouts.Reception.LinkJS')
+    @include('layouts.Patient.LinkJS')
 </body>
 
 </html>

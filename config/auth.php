@@ -70,6 +70,11 @@ return [
             'driver' => 'session',
             'provider' => 'nurses',
         ],
+
+        'patient' => [
+            'driver' => 'session',
+            'provider' => 'patients',
+        ],
     ],
 
     /*
@@ -123,6 +128,11 @@ return [
         'nurses' => [
             'driver' => 'eloquent',
             'model' => App\Models\Nurse::class,
+        ],
+
+        'patients' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Patient::class,
         ],
         
 

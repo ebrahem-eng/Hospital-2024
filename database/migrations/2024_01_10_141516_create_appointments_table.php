@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('patientID')->references('id')->on('patients');
             $table->string('dayName');
             $table->string('date');
+            $table->tinyInteger('status')->nullable();
             $table->string('startTimeAppointment');
             $table->string('endTimeAppointment');
             $table->string('details')->nullable();
