@@ -81,7 +81,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <a class="btn_2 d-none d-lg-block" href="#">HOT LINE- 09856</a>
+                        <a class="btn_2 d-none d-lg-block" href="{{route('patient.signUp.page')}}" style="margin-right: 10px;">Sign Up</a>
+                        <a class="btn_2 d-none d-lg-block" href="{{route('patient.login.page')}}">Login</a>                        
                     </nav>
                 </div>
             </div>

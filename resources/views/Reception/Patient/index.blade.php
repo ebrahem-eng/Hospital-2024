@@ -110,7 +110,7 @@
                                                                 style="width: 100px; height: 100px;">
                                                         </td>
 
-                                                        <td>{{ $patient->reception->name }}</td>
+                                                        <td>{{ $patient->reception->name ?? '-'}}</td>
                                                         <td>
                                                             {{ $patient->created_at }}
                                                         </td>
