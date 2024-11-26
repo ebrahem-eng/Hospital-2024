@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Specialization\SpecializationController;
 use App\Http\Controllers\Admin\StoreKeeper\StoreKeeperController;
 use App\Http\Controllers\ProfileController;
 use App\Models\StoreKeeper;
+use App\Http\Controllers\Admin\Laboratory\LaboratoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -167,6 +168,28 @@ Route::middleware(['Admin'])->name('admin.')->prefix('admin')->group(function ()
   Route::delete('/nurse/forceDelete/{id}', [NurseController::class, 'forceDelete'])->name('nurse.force.delete');
 
   Route::post('/nurse/restore/{id}', [NurseController::class, 'restore'])->name('nurse.restore');
+
+
+    //================================ Laboratory Route ========================
+
+    Route::get('/laboratory/index', [LaboratoryController::class, 'index'])->name('laboratory.index');
+
+    Route::get('/laboratory/create', [LaboratoryController::class, 'create'])->name('laboratory.create');
+
+    Route::post('/laboratory/store', [LaboratoryController::class, 'store'])->name('laboratory.store');
+
+    Route::get('/laboratory/edit/{id}', [LaboratoryController::class, 'edit'])->name('laboratory.edit');
+
+    Route::put('/laboratory/update/{id}', [LaboratoryController::class, 'update'])->name('laboratory.update');
+
+    Route::get('/laboratory/archive', [LaboratoryController::class, 'archive'])->name('laboratory.archive');
+
+    Route::delete('/laboratory/softDelete/{id}', [LaboratoryController::class, 'softDelete'])->name('laboratory.soft.delete');
+
+    Route::delete('/laboratory/forceDelete/{id}', [LaboratoryController::class, 'forceDelete'])->name('laboratory.force.delete');
+
+    Route::post('/laboratory/restore/{id}', [LaboratoryController::class, 'restore'])->name('laboratory.restore');
+
 
   //================================ Department Route ========================
 
