@@ -49,6 +49,12 @@
                                                 <input type="text" class="form-control" name="code"
                                                     required="">
                                             </div>
+
+                                            <div class="col">
+                                                <label>Type</label>
+                                                <input type="text" class="form-control" name="type"
+                                                    required="">
+                                            </div>
                                         </div>
 
                                         <br>

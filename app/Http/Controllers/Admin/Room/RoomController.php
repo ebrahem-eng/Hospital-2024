@@ -37,6 +37,7 @@ class RoomController extends Controller
         Room::create([
             'name' => $request->input('name'),
             'code' => $request->input('code'),
+            'type' => $request->input('type'),
             'status' => $request->input('status'),
             'department_id' => $request->input('departmentID'),
             'floor_id' => $request->input('floorID'),
